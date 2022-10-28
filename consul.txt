@@ -1,0 +1,14 @@
+consul agent -ui -dev -bind=192.168.100.24 -client=0.0.0.0 -data-dir=.
+
+consul agent -server -ui -bootstrap-expect=1 -node=agent-one -bind=192.168.100.24 -client=0.0.0.0  -data-dir=/tmp/consul -config-dir=/etc/consul.d
+
+consul agent -node=agent-two -bind=192.168.100.25 -enable-script-checks=true -data-dir=/tmp/consul -config-dir=/etc/consul.d
+
+
+sudo -i
+cd ..
+cd etc/haproxy
+vim haproxy.cfg
+
+
+/etc/haproxy/errors# nano 503.http
